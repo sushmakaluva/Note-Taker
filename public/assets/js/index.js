@@ -1,5 +1,4 @@
 const $noteTitle = $('.note-title');
-const $noteId = $('.note-id');
 const $noteText = $('.note-textarea');
 const $saveNoteBtn = $('.save-note');
 const $newNoteBtn = $('.new-note');
@@ -49,7 +48,6 @@ const handleNoteSave = function () {
   const newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
-    id: $noteId.val(),
   };
 
   saveNote(newNote).then(() => {
