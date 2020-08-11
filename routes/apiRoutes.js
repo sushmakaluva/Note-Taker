@@ -6,7 +6,7 @@ const routes = (app) => {
       if (err) throw err;
       const parsedData = JSON.parse(data);
       for (let i = 0; i < parsedData.length; i += 1) {
-        parsedData[i].id = i;
+        parsedData[i].id = "id" + i;
       }
       res.json(parsedData);
     });
@@ -28,7 +28,10 @@ const routes = (app) => {
   });
 
   app.delete('/api/notes/:id', (req, res) => {
-    const chosenId = parseInt(req.params.id);
+
+    const chosenId = parseInt(req.params.id.split('id')[1]);
+    // console.log(req.params);
+    // console.log(req.query);
     fs.readFile(`${__dirname}/../db/db.json`, 'utf8', (err, data) => {
       if (err) throw err;
       const ArrayData = JSON.parse(data);
